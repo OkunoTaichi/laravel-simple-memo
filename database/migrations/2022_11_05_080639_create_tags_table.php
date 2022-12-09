@@ -23,6 +23,7 @@ class CreateTagsTable extends Migration
             $table->timestamp('update_at')->default(\DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
             $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
             $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 

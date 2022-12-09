@@ -132,7 +132,6 @@ class HomeController extends Controller
         });
         
         //トランザクションここまで
-
         return redirect( route('home') );
     }
 
