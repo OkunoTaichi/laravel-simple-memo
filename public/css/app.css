@@ -10821,3 +10821,22 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+
+/* 追加 */
+.card_height{
+  height:100vh;
+}
+.t-height{
+  height: 250px;
+  max-height: 80vh;
+}
+.card-header{
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+main{
+  max-width: 1280px;
+  margin: 0 auto;
+}

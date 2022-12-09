@@ -2,22 +2,20 @@
 
 @section('content')
 <div class="card">
-    <div class="card-header">
+    <div class="card-header d-flex justify-content-between">
         メモ編集
-        <form class="card-body" action="{{ route('destory') }}" method="POST">
+        <form action="{{ route('destory') }}" method="POST">
             @csrf
             <input type="hidden" name="memo_id" value="{{ $edit_memo[0]['id'] }}">
             <button type="submit">削除</button>
         </form>
     </div>
     <!-- route('store')と書くと-> /store -->
-    <form class="card-body" action="{{ route('update') }}" method="POST">
+    <form class="card-body card_height" action="{{ route('update') }}" method="POST">
         @csrf
         <input type="hidden" name="memo_id" value="{{ $edit_memo[0]['id'] }}">
         <div class="form-group">
-            <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力">
-                {{$edit_memo[0]['content']}}
-            </textarea>
+            <textarea class="form-control t-height" name="content" rows="3" placeholder="ここにメモを入力">{{$edit_memo[0]['content']}}</textarea>
         </div>
         @foreach($tags as $t)
         <div class="form-check form-check-inline mt-3 mb-3">

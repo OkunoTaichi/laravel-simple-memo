@@ -26,6 +26,7 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
+    //  ホーム画面に返す
     public function index()
     {       
         $tags = Tag::where('user_id', '=', \Auth::id()) -> whereNull('deleted_at') -> orderBy('id', 'DESC')

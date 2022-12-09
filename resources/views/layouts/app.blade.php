@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Laravel-simple-memo') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -79,31 +79,42 @@
         <!-- 3カラムに変更 -->
         <main class="">
             <div class="row">
-                <div class="col-md-2 p-0">
+                <div class="col-md-2 p-2 pt-4">
                     <div class="card">
                         <div class="card-header">左カラム</div>
-                        <div class="card-body">
+                        <div class="card-body card_height">
                             <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 p-0">
+                
+                <div class="col-md-6 p-2 pt-4">
+                    @yield('content')
+                </div>
+
+                <div class="col-md-4 p-2 pt-4">
                     <div class="card">
                         <div class="card-header">メモ一覧</div>
-                        <div class="card-body">
+                        <div class="card-body card_height">
                             @foreach($memos as $memo)
-                            <a href="/edit/{{$memo['id']}}" class="card-text d-block">
-                                {{$memo['content']}}
-                            </a>
+
+
+                            <!-- ここのルート修正必要 -->
+                            <div class="mb-3">
+                                <h5 class="p-0 mb-0">No.{{$memo['id']}}</h5>
+                                <a href="/sourse/laravel-simple-memo/public/edit/{{$memo['id']}}" class="card-text d-block">
+                                <!-- <a href="/sourse/laravel-simple-memo/public/edit/{{$memo['id']}}" class="card-text d-block"> -->
+                                <!-- ここのルート修正必要 -->
+                                    {{$memo['content']}}
+                                </a>
+                            </div>
                             @endforeach
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    @yield('content')
                 </div>
             </div>
         </main>
     </div>
 </body>
 </html>
+
