@@ -83,7 +83,10 @@
                     <div class="card">
                         <div class="card-header">左カラム</div>
                         <div class="card-body card_height">
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text">
+                        
+
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -101,11 +104,10 @@
 
                             <!-- ここのルート修正必要 -->
                             <div class="mb-3">
-                                <h5 class="p-0 mb-0">No.{{$memo['id']}}</h5>
                                 <a href="/sourse/laravel-simple-memo/public/edit/{{$memo['id']}}" class="card-text d-block">
-                                <!-- <a href="/sourse/laravel-simple-memo/public/edit/{{$memo['id']}}" class="card-text d-block"> -->
+                                <!-- <a href="/edit/{{$memo['id']}}" class="card-text d-block"> -->
                                 <!-- ここのルート修正必要 -->
-                                    {{$memo['content']}}
+                                    ・{{$memo['title']}}
                                 </a>
                             </div>
                             @endforeach

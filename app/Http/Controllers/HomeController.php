@@ -29,7 +29,9 @@ class HomeController extends Controller
     //  ホーム画面に返す
     public function index()
     {       
-        $tags = Tag::where('user_id', '=', \Auth::id()) -> whereNull('deleted_at') -> orderBy('id', 'DESC')
+        $tags = Tag::where('user_id', '=', \Auth::id()) 
+        -> whereNull('deleted_at')
+        -> orderBy('id', 'DESC')
         ->get();
         // dd($tags);
 
@@ -46,7 +48,7 @@ class HomeController extends Controller
         // =======ここからトランザクション開始======
         DB::transaction(function()use($posts){
             //メモIDをインサートして取得
-            $memo_id = Memo::insertGetId(['content' => $posts['content'],'user_id' => \Auth::id()]);
+            $memo_id = Memo::insertGetId(['title' => $posts['title'],'content' => $posts['content'],'user_id' => \Auth::id()]);
 
             //新規タグが既にtagsテーブルに存在するかチェック
             $tag_exists = Tag::where('user_id', '=' ,\Auth::id())-> where('name', '=', $posts['new_tag'])
@@ -95,8 +97,15 @@ class HomeController extends Controller
         $tags = Tag::where('user_id', '=', \Auth::id()) -> whereNull('deleted_at') -> orderBy('id', 'DESC')
         ->get();
 
+        // return view('edit/{id}' , compact('edit_memo', 'include_tags' ,'tags'));
         return view('edit' , compact('edit_memo', 'include_tags' ,'tags'));
     }
+
+
+
+   
+
+
 
     public function update(Request $request)
     {
@@ -105,7 +114,7 @@ class HomeController extends Controller
 
         //トランザクションスタート
         DB::transaction(function() use($posts){
-            Memo::where('id', $posts['memo_id'])->update(['content' => $posts['content']]);
+            Memo::where('id', $posts['memo_id'])->update(['title' => $posts['title']],['content' => $posts['content']]);
             
             //一旦メモとタグの紐付けを削除
             MemoTag::where('memo_id', '=', $posts['memo_id'])->delete();

@@ -6,6 +6,9 @@
     <!-- route('store')と書くと-> /store -->
     <form class="card-body card_height" action="{{ route('store') }}" method="POST">
         @csrf
+        <div class="form-group mb-3">
+            <textarea class="form-control" name="title" rows="3" placeholder="ここにタイトルを入力"></textarea>
+        </div>
         <div class="form-group">
             <textarea class="form-control" name="content" rows="3" placeholder="ここにメモを入力"></textarea>
         </div>
